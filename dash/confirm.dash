@@ -1,0 +1,11 @@
+confirm() {
+    while true; do
+        printf "%s [y/N]: " "${1:-Continue?}"
+        read -r ans || return 1
+        case "$ans" in
+            [Yy]|[Yy][Ee][Ss]) return 0 ;;
+            [Nn]|[Nn][Oo]|"")  return 1 ;;
+            *) printf "Please answer yes or no.\n" ;;
+        esac
+    done
+}
